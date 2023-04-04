@@ -1,0 +1,78 @@
+create table salary(
+id serial  primary key,
+monthly_salary int not null
+);
+
+
+
+create table roles(
+id serial primary key,
+role_title varchar(50) unique not null
+);
+
+create table roles_salary(
+id serial primary key,
+role_id int not null,
+salary_id int not null,
+foreign key (role_id)
+	references roles(id),
+foreign key (salary_id)
+	references salary(id)
+);
+
+insert into roles_salary(role_id, salary_id)
+values (1,1),
+		(2,2),
+		(3,6),
+		(4,2),
+		(5,4);
+		
+
+
+
+
+
+
+
+insert into roles(role_title)
+values  ('QA_Manul_Junior'),
+		('QA_Midle_Junior'),
+		('QA_Senior_Junior'),
+		('Java_developerl_Junior'),
+		('Java_developerl_Midle'),
+		('Java_developerl_Senior'),
+		('Manager');
+		
+	
+	insert into salary(monthly_salary)
+values  (300),
+		(800),
+		(1200),
+		(1500),
+		(1800),
+		(2000),
+		(2300),
+		(2500),
+		(2700),
+		(3000),
+		(3200);
+	select * from salary;
+select * from roles;
+select * from roles_salary;
+		
+
+update salary 
+set monthly_salary = 5000
+where id = 11;
+
+delete from salary
+where id = 11;
+
+alter table roles
+add column parling int;
+
+alter table roles
+rename column parling to taxi;
+
+alter table roles 
+drop column taxi;
